@@ -1,5 +1,8 @@
 # streaming-02-multiple-processes
 
+## Student Name: Lindsey Sullivan
+
+## Github Repo: https://github.com/LindseySully/streaming-02-multiple-processes
 > Multiple processes accessing a shared resource concurrently
 
 ## Overview
@@ -40,13 +43,40 @@ Read the output. Read the code.
 Try to figure out what's going on. 
 
 1. What libraries did we import?
+    - datetime
+    - logging
+    - multiprocessing
+    - os
+    - platform
+    - sqlite3
+    - sys
+    - time
 1. Where do we set the TASK_DURATION_SECONDS?
+    - Where the constants are set up - line 40
 1. How many functions are defined? 
+    - 7 functions
 1. What are the function names? 
+    - recreate_datebase
+    - create_table
+    - drop_table
+    - insert_pet
+    - process_one
+    - process_two
+    - process_three
 1. In general, what does each function do? 
+    - recreate_datebase: drops the table and recreates the database itself
+    - create_table: creates the pet table
+    - drop_table: drops the pet table if it already exists
+    - insert_pet: inserts pet information into the pet table
+    - process_one: calls on the first process to submit the pets of Ace & Buddy
+    - process_two: calls on the 2nd process to submit the pets of Cooper & Dingo
+    - process_three: calls on the 3rd process to submit the pets of Emma & Felix
 1. Where does the execution begin? Hint: generally at the end of the file.
+    - Line 169 - if __name__ == "__main__"
 1. How many processes do we start?
+    - 3 Processes
 1. How many records does each process insert?
+    - 2 Records in each process
 
 In this first run, we start 3 processes, 
 each inserting 2 records into a shared database 
@@ -95,12 +125,6 @@ On Windows the select all, copy, paste hotkeys are:
 - CTRL c 
 - CTRL v 
 
-On a Mac the select all, copy, paste hotkeys are:
-
-- Command a
-- Command c
-- Command v
-
 Detailed copy/paste instructions (as needed)
 
 1. To use these keys to transfer your output into a file, 
@@ -140,3 +164,6 @@ with no process able to move forward and make progress.
 ### Learn More
 
 Check out Wikipedia's article on deadlock and other sources to learn how to prevent and avoid locking issues in concurrent processes. 
+
+### Reflection:
+This process highlights the potential pitfalls but also the capabilities of multi-processing. With the task duration increased we run into errors that would lead to dataloss because the database is locked while another process is running. However, if the task duration is slimmed down then we do not encounter those issues.
